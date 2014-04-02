@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>SIR Model</title>
+</head>
+
+<body>
+	<center>SIR Model Output</center>
+
+	<script type="text/javascript">
+		var infectRate = 0.0005;
+		var removalRate = 0.3;
+
+		var S = 50;	
+		var I = 1;
+		var R = 0;
+
+		var N = Math.round(S + I + R);
+
+		var sList = [];
+		var iList = [];
+		var rList = [];
+
+		var cure = false;
+
+		while(!cure)
+		{
+			var newInfected = 0;
+
+			for(var i=0; i<S; i++)
+			{
+				if(Math.random() < infectRate*(I/N))
+					newInfected++;
+			}
+
+			var recovered = 0;
+
+			for(var i=0; i<I; i++)
+			{
+				if(Math.random() < removalRate)
+					recovered++;
+			}
+
+			S -= newInfected;
+			I += (newInfected - recovered);
+			R += recovered;
+
+			sList.push(S);
+			iList.push(I);
+			rList.push(R);
+		}
+
+		for(var i=0;i<sList.length;i++)
+		{
+			document.write(sList[i] + "<br>");
+			//document.write(iList[i] + "<br>");
+			//document.write(rList[i] + "<br>");
+
+			//sList[i] = document.getElementById("s" + i);
+			//iList[j] = document.getElementById("i" + j);
+			//rList[k] = document.getElementById("r" + k);
+		}
+	</script>
+</body>
+
+</html>
