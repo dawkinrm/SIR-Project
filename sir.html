@@ -9,7 +9,9 @@
 	<center>SIR Model Output</center>
 
 	<script type="text/javascript">
-		var infectRate = 0.0005;
+	function sirModel()
+	{
+		var infectRate = 0.5;
 		var removalRate = 0.3;
 
 		var S = 50;	
@@ -22,9 +24,13 @@
 		var iList = [];
 		var rList = [];
 
+		var x = document.getElementById("slist");
+		var y = document.getElementById("ilist");
+		var z = document.getElementById("rlist");
+
 		var cure = false;
 
-		while(!cure)
+		while(!cure && S !== 0)
 		{
 			var newInfected = 0;
 
@@ -56,15 +62,43 @@
 			sList.push(S);
 			iList.push(I);
 			rList.push(R);
+
+			sList.toString();
+			iList.toString();
+			rList.toString();
+
+			x.innerHTML = sList.slice(0,50);
+			y.innerHTML = iList.slice(0,50);
+			z.innerHTML = rList.slice(0,50);
 		}
 
-		for(var i=0;i<sList.length;i++)
+		/*for(var i=0;i<sList.length;i++)
 		{
 			document.write(sList[i] + "<br>");
-			//document.write(iList[i] + "<br>");
-			//document.write(rList[i] + "<br>");
-		}
+			document.write(iList[i] + "<br>");
+			document.write(rList[i] + "<br>");
+		}*/
+
+		//document.write(sList.slice(0,50) + "\n");
+		//document.write(iList.slice(0,50) + "\n");
+		//document.write(rList.slice(0,50) + "\n");
+	}
 	</script>
+	
+	<div>
+		<p id="slist">sList</p>
+	</div>
+
+	<div>
+		<p id="ilist">iList</p>
+	</div>
+
+	<div>
+		<p id="rlist">rList</p>
+	</div>
+
+	<button onclick="sirModel()">Click to initiate SIR model</button>
+
 </body>
 
 </html>
