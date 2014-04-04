@@ -44,6 +44,13 @@
 
 			S -= newInfected;
 			I += (newInfected - recovered);
+
+			if(I === 0)
+			{
+				I = 1;
+				recovered -= 1;
+			}
+
 			R += recovered;
 
 			sList.push(S);
@@ -56,10 +63,6 @@
 			document.write(sList[i] + "<br>");
 			//document.write(iList[i] + "<br>");
 			//document.write(rList[i] + "<br>");
-
-			//sList[i] = document.getElementById("s" + i);
-			//iList[j] = document.getElementById("i" + j);
-			//rList[k] = document.getElementById("r" + k);
 		}
 	</script>
 </body>
