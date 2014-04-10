@@ -23,6 +23,10 @@
 
 	<br>
 
+	<div id="chartcontainer4">This is just a replacement in case Javascript is not available or used for SEO purposes</div>
+
+	<br>
+
 	<script type="text/javascript">
 	function sirModel()
 	{
@@ -30,15 +34,15 @@
 		var removalRate = 0.3;
 		var addedTime = 0;
 
-		var S = 50;	
+		var S = 75;	
 		var I = 1;
 		var R = 0;
 
 		var N = Math.round(S + I + R);
 
-		var sList = []; sList2 = [];
-		var iList = []; iList2 = [];
-		var rList = []; rList2 = [];
+		var sList = [];
+		var iList = [];
+		var rList = [];
 		var time = [];
 		var display = [];
 		var display2 = [];
@@ -114,16 +118,48 @@
   		//document.write(display);
 
 		var myChart = new JSChart('chartcontainer', 'line');
-		myChart.setDataArray(display);
+		myChart.setDataArray(display, 'line1');
+		//myChart.setLineSpeed(100);
+		myChart.setBackgroundColor('#B0B0B0');
+		myChart.setTitle('Susceptibles vs. Time');
+		myChart.setAxisColor('#000000');
+		myChart.setAxisValuesColor('#000000');
+		myChart.setTitleColor('#000000');
+		myChart.setAxisNameX('Time');
+		myChart.setAxisNameColorX('#000000');
+		myChart.setAxisNameY('S');
+		myChart.setAxisNameColorY('#000000');
+		myChart.setLineColor('#006633', 'line1');
+		myChart.setGrid(false);
 		myChart.draw();
 
 		var myChart2 = new JSChart('chartcontainer2', 'line');
-		myChart2.setDataArray(display2);
+		myChart2.setDataArray(display2, 'line2');
+		myChart2.setTitle('Infected vs. Time');
+		myChart2.setAxisNameX('Time');
+		myChart2.setAxisNameY('I');
+		myChart2.setLineColor('#000099', 'line2');
 		myChart2.draw();
 
 		var myChart3 = new JSChart('chartcontainer3', 'line');
-		myChart3.setDataArray(display3);
+		myChart3.setDataArray(display3, 'line3');
+		myChart3.setTitle('Recovered vs. Time');
+		myChart3.setAxisNameX('Time');
+		myChart3.setAxisNameY('R');
+		myChart3.setLineColor('#FF0000', 'line3');
 		myChart3.draw();
+
+		var myChart4 = new JSChart('chartcontainer4', 'line');
+		myChart4.setTitle('SIR vs. Time');
+		myChart4.setAxisNameX('Time');
+		myChart4.setAxisNameY('SIR');
+		myChart4.setDataArray(display, 'line1');
+		myChart4.setLineColor('#006633', 'line1');
+		myChart4.setDataArray(display2, 'line2');
+		myChart4.setLineColor('#000099', 'line2');
+		myChart4.setDataArray(display3, 'line3');
+		myChart4.setLineColor('#FF0000', 'line3');
+		myChart4.draw();
 
 		sList.toString();
 		iList.toString();
